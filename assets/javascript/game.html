@@ -19,7 +19,7 @@
         // Define variables for wins, losses, guesses, and make an array to keep all the choices guessed in.
         var wins = 0;
 		var losses = 0;
-		var guesses = 5;
+		var guesses = 10;
 		var guessChoices = [];
 		// Variable that contains all the letter options that the computer can guess.
 		var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -38,19 +38,19 @@
                 // The guess choices will be contained in an array.
 				if (userGuess === computerGuess) {
 					wins++;
-					numGuesses = 5;
+					guesses = 10;
 					guessChoices = [];
 				}
                 // If the userGuess is not equal to computerGuess then the amount of numGuesses will go down.
                 // Whatever the player guesses will be stored in the guessChoices array above.
 				if (userGuess != computerGuess) {
-					numGuesses --;
+					guesses --;
 					guessChoices.push(userGuess);
 				}
                 // If the player does not guess the correct letter than the loss counter will go up.
                 // Again, the choices will get logged in the guessChoices array.
-				if (numGuesses === 0) {
-                    numGuesses = 5;
+				if (guesses === 0) {
+                    guesses = 10;
 				    losses ++;
 				    guessChoices = [];
 
@@ -63,7 +63,7 @@
 			"<p>Guess what letter I'm thinking of!</p>" +
 			"<p>Wins: " + wins + "</p>" +
 			"<p>Losses: " + losses + "</p>" +
-			"<p>Guesses Left: " + numGuesses + "</p>" +
+			"<p>Guesses Left: " + guesses + "</p>" +
 			"<p>Your Guesses so far: " + guessChoices.join(", ") + "</p>";
 
 			document.querySelector("#game").innerHTML = html;
